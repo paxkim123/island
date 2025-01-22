@@ -21,6 +21,7 @@ public class PatientInfoService {
 		      Patient patient_data = Patient.builder()
 		                        .Name(picDTO.getName())
 		                        .Gender(picDTO.getGender())
+		                        .Age(picDTO.getAge())
 		                        .Phone_Number(picDTO.getPhone_Number())
 		                        .Address_1(picDTO.getAddress_1())
 		                        .Address_2(picDTO.getAddress_2())
