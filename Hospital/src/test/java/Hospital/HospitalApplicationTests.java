@@ -1,10 +1,10 @@
-package com.yse.dev;
+package Hospital;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Project123ApplicationTests {
+class HospitalApplicationTests {
 
 	@Test
 	void contextLoads() {
