@@ -1,182 +1,149 @@
 public class UserInfoController {
-
-	@Autowired
-	private UserInfoService uis;
-	
-	@GetMapping("/Home") // 홈 화면 출력
-	public String GotoHome(HttpSession session, Model model) {
-		String UserId = (String)session.getAttribute("UserId");
-		if(UserId != null) {
-			UserInfoDTO uiDTO = this.uis.UserInfoRead(UserId);
-			model.addAttribute("SessionUserId",UserId);
-			model.addAttribute("SessionUserName",uiDTO.getUserName());
-			session.setAttribute("UserId",UserId);
-			session.setAttribute("UserName",uiDTO.getUserName());
+	//로그인 실행 로직
+	public boolean UserLogin(String UserId, String UserPw) throws Exception{
+		UserInfo userinfo = this.uir.findById(UserId).orElse(null);
+		if(userinfo==null) {
+			return false;
 		}
-		else {
-			model.addAttribute("SessionUserId",null);
-			model.addAttribute("SessionUserName",null);
+		else if(!userinfo.getUserPw().equals(Hashing(UserPw.getBytes(), userinfo.getSalt()))) {
+			return false;
+			
 		}
-		return "/Home";
+		return true;
 	}
 	
-	@GetMapping("/UserPage/Login") // 로그인 화면으로 이동
-	public String GotoLogin() {
-		return "/UserPage/Login";
-	}
-	
-	@PostMapping("/UserPage/Login") // 로그인 버튼 누르면 실행 함수
-	public String Login(@RequestParam("UserId") String UserId,
-						@RequestParam("UserPw") String UserPw,
-						HttpSession session, Model model) throws Exception {
-		boolean Result = this.uis.UserLogin(UserId,UserPw);
-		
-		if(Result == true){
-			session.setAttribute("UserId", UserId);
-			return "redirect:/Home";
+	public String Byte_to_String(byte[] temp) {
+		StringBuilder sb = new StringBuilder();
+		for(byte a: temp) {
+			sb.append(String.format("%02x", a)); // %02x는 두 자릿수의 16진수로 표현하는 스트링 포맷
 		}
-		else {
-			model.addAttribute("Error", "아이디 또는 비밀번호가 틀렸습니다.");
-			return "/UserPage/Login";
+		return sb.toString();
+	}
+	
+	public String Hashing(byte[] password, String salt) throws Exception{//해싱 함수: 임의의 길이값을 받아 고정된 길이의 값으로 반환
+		MessageDigest md = MessageDigest.getInstance("SHA-256"); 
+		for(int i = 0; i < 10000; i++) {
+			String temp = Byte_to_String(password)+salt;//입력바다은 
+			md.update(temp.getBytes());
+			password = md.digest();
 		}
-	}
-	
-	
-	
-	@GetMapping("/UserPage/SignUp") // 회원가입 버튼을 누르면 회원가입 화면으로 이동 
-	public String GotoSignUp() {
-		return "/UserPage/SignUp";
-	}
-	
-	@PostMapping("/UserPage/SignUp") // 회원가입 화면에서, 입력 후 회원가입 완료 누르면 실행 후 이동
-	public String SignUp(UserInfoCreateDTO uicDTO, RedirectAttributes rda) throws Exception {
-		if(this.uis.UserIdCheck(uicDTO.getUserId())) {
-			rda.addFlashAttribute("Error","사용할 수 없는 아이디입니다.");
-			rda.addFlashAttribute("UserId",uicDTO.getUserId());
-			rda.addFlashAttribute("UserName",uicDTO.getUserName());
-			rda.addFlashAttribute("UserRegNum",uicDTO.getUserRegNum());
-			rda.addFlashAttribute("UserPhone",uicDTO.getUserPhone());
-			rda.addFlashAttribute("UserGender",uicDTO.getUserGender());
-			rda.addFlashAttribute("UserAddress1",uicDTO.getUserAddress1());
-			rda.addFlashAttribute("UserAddress2",uicDTO.getUserAddress2());
-			rda.addFlashAttribute("Salt", uicDTO.getSalt());
-			return "redirect:/UserPage/SignUp";
-		}
-		this.uis.UserInfoRegister(uicDTO);
-		return "/UserPage/SignUpComplete";
-	}
-	
-	
-	@GetMapping("/UserPage/Logout") // 로그아웃
-	public String Logout(HttpSession session) {
-		session.invalidate();
-		return "redirect:/Home";
-	}
-	
-	@GetMapping("/UserPage/EditUserInfo") // 회원정보 수정 화면으로 이동
-	public ModelAndView GotoEditUserInfo(HttpSession session, Model model) {
-		ModelAndView mav = new ModelAndView();
-		String UserId = (String)session.getAttribute("UserId");
-		
-		if(UserId == null) {
-			mav.setViewName("redirect:/Home");
-			return mav;
-		}
-		
-		model.addAttribute("SessionUserId",UserId);
-		UserInfoDTO uiDTO = this.uis.UserInfoRead(UserId);
-		mav.addObject("UserInfo",uiDTO);
-		mav.setViewName("/UserPage/EditUserInfo");
-		return mav;
-	}
-	
-	@PostMapping("/UserPage/EditUserInfo") // 회원정보 수정 화면에서, 수정 버튼 누를시 수정 기능 작동
-	public String EditUserInfo(UserInfoEditDTO uieDTO, RedirectAttributes rda) {
-		this.uis.UserInfoModify(uieDTO);
-		return "/UserPage/EditUserInfoResult";
-
-	}
-	
-	@GetMapping("/UserPage/FindUserId")
-	public String GotoFindUserId() {
-		return "/UserPage/FindUserId";
-	}
-	
-	@PostMapping("/UserPage/FindUserId")
-	public ModelAndView FindUserId(@RequestParam("UserName") String UserName,
-								   @RequestParam("UserRegNum") String UserRegNum,
-								   Model model) {
-		ModelAndView mav = new ModelAndView();
-		UserInfoDTO uiDTO = new UserInfoDTO();
-		uiDTO = this.uis.FindUserId(UserName, UserRegNum);
-		if(uiDTO != null) {
-			mav.addObject("FindUserInfoResult", uiDTO);
-			mav.setViewName("/UserPage/FindUserIdResult");
-			return mav;
-		}
-		else {
-			model.addAttribute("error","입력하신 정보와 일치하는 회원정보가 없습니다.");
-			mav.setViewName("/UserPage/FindUserId");
-			return mav;
-		}
-	}
-	@GetMapping("/UserPage/FindUserIdResult")
-	public String GotoFindUserIdResult() {
-		return "/UserPage/FindUserIdResult";
-	}
-	@GetMapping("/UserPage/FindUserPw")
-	public String GotoFindUserPw() {
-		return "/UserPage/FindUserPw";
-	}
-	@PostMapping("/UserPage/FindUserPw")
-	public ModelAndView FindUserPw(@RequestParam("UserId") String UserId,
-								   @RequestParam("UserName") String UserName,
-								   @RequestParam("UserRegNum") String UserRegNum,
-								   Model model) {
-		ModelAndView mav = new ModelAndView();
-		UserInfoDTO uiDTO = new UserInfoDTO();
-		uiDTO = this.uis.FindUserPw(UserId, UserName, UserRegNum);
-		if(uiDTO != null) {
-			mav.addObject("FindUserInfoResult",uiDTO);
-			mav.setViewName("/UserPage/ResetUserPw");
-			return mav;
-		}
-		else {
-			model.addAttribute("error","입력하신 정보와 일치하는 회원정보가 없습니다.");
-			mav.setViewName("/UserPage/FindUserPw");
-			return mav;
-		}
+		return Byte_to_String(password);
 	}
 
-	@PostMapping("/UserPage/ResetUserPw")
-	public String ResetUserPw(@RequestParam("UserId") String UserId,
-							  @RequestParam("UserPw") String UserPw) {
-		this.uis.ResetUserPw(UserId, UserPw);
-		return "/UserPage/ResetUserPwResult";
-	}
 	
-	@GetMapping("/UserPage/DeleteUserId")
-	public String GotoDeleteUserId() {
-		return "/UserPage/DeleteUserId";
+	//회원 가입 로직 (재출시 DB에 등록)
+	public void UserInfoRegister(UserInfoCreateDTO uicDTO) throws Exception {
+		UserInfo userinfo = UserInfo.builder()
+					.UserId(uicDTO.getUserId())
+					.UserPw(Hashing(uicDTO.getUserPw().getBytes(), uicDTO.getSalt()))
+					.Salt(uicDTO.getSalt())
+					.UserName(uicDTO.getUserName())
+					.UserRegNum(uicDTO.getUserRegNum())
+					.UserGender(uicDTO.getUserGender())
+					.UserPhone(uicDTO.getUserPhone())
+					.UserAddress1(uicDTO.getUserAddress1())
+					.UserAddress2(uicDTO.getUserAddress2())
+					.build();
+		this.uir.save(userinfo); // 회원 정보 저장
 	}
-	
-	@PostMapping("/UserPage/DeleteUserId")
-	public String DeleteUserId(@RequestParam("UserId") String UserId,
-							   @RequestParam("UserPw") String UserPw,
-							   HttpSession session, Model model) {
-		boolean result = this.uis.DeleteUserId(UserId, UserPw);
-		if(result == true) {
-			session.invalidate();
-			return "/UserPage/DeleteUserIdResult";
-		}
-		else {
-			model.addAttribute("Error","아이디 혹은 비밀번호가 일치하지 않습니다.");
-			return "/UserPage/DeleteUserId";
-		}
-	}
-	@GetMapping("/UserPage/DeleteUserIdResult")
-	public String GotoDeleteUserIdResult() {
-		return "/UserPage/DeleteUserIdResult";
-	}
-	
 }
+
+
+public class UserInfoDTO {
+	
+	@Id
+	private String UserId;
+	
+	private String UserPw;
+	
+	private String UserName;
+	
+	private String UserRegNum;
+	
+	private String UserGender;
+	
+	private String UserPhone;
+	
+	private String UserAddress1;
+	
+	private String UserAddress2;
+	
+	private String Salt;
+	
+	private LocalDateTime InsertDateTime;
+	
+	public UserInfoDTO FromUserInfo(UserInfo u) {
+		this.UserId = u.getUserId();
+		this.UserPw = u.getUserPw();
+		this.UserName = u.getUserName();
+		this.UserRegNum = u.getUserRegNum();
+		this.UserGender = u.getUserGender();
+		this.UserPhone = u.getUserPhone();
+		this.UserAddress1 = u.getUserAddress1();
+		this.UserAddress2 = u.getUserAddress2();
+		this.InsertDateTime = u.getInsertDateTime();
+		this.Salt = u.getSalt();
+		return this;
+	}
+	
+	public static UserInfoDTO UserInfoFactory(UserInfo u) {
+		UserInfoDTO uiDTO = new UserInfoDTO();
+		uiDTO.FromUserInfo(u);
+		return uiDTO;
+	}
+}
+
+public class UserLoginDTO {
+	@Id
+	@NonNull
+	private String UserId;
+	@NonNull
+	private String UserPw;
+	@NonNull
+	private String Salt;//로그인 DTO에 멤버 변수 Salt 추가
+}
+
+public class UserInfoCreateDTO {
+	@NonNull
+	private String UserId;
+	@NonNull
+	private String UserPw;
+	@NonNull
+	private String UserName;
+	@NonNull
+	private String UserRegNum;
+	@NonNull
+	private String UserGender;
+	@NonNull
+	private String UserPhone;
+	@NonNull
+	private String UserAddress1;
+	@NonNull
+	private String UserAddress2;
+	@NonNull
+	private String Salt;
+	
+	private UserInfoCreateDTO() {
+	     this.Salt = generateSalt(); // 아래의 generateSalt() 자체가 결괏값으로 16자리의 스트링을 반환한다.
+	     System.out.println(Salt);
+	}//DTO 초기 생성시 Salt를 생성하여 멤버변수 Salt에 대입한다.
+	 //getSalt()를 메서드 이름으로 쓰려고 했으나 @Getter를 사용하면서 두 메서드 간 충돌이 발생하여 generateSalt()로 변경
+
+	 private String generateSalt() {
+	     SecureRandom random = new SecureRandom(); 
+	     byte[] salt = new byte[16];
+	     random.nextBytes(salt);
+	     return Byte_to_String(salt);
+	 }
+	 //16개의 정보를 저장하는 바이트 배열에서 자바가 제공하는 강화된 보안의 난수 생성기로 배열에 넣은 후 String으로 변환한다.
+	//이때 String으로 변환하는 함수는 .toString()이 아닌 Byte_to_String 함수를 사용한다(DTO자체에 내장시킴)
+
+	 private String Byte_to_String(byte[] temp) {
+		StringBuilder sb = new StringBuilder();
+		for(byte a: temp) {
+			sb.append(String.format("%02x", a)); //x는 16진수를 뜻하고 02는 두 자릿수의 16진수를 말한다.
+		}
+		return sb.toString();
+	}//StringBuilder를 사용하여 String 자료형을 원하는 대로 편집할 수 있도록 한다. for each 반복문으로 String의 format을 "%02x"로 지정
+}
+
