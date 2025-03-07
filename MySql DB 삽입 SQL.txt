@@ -1,0 +1,31 @@
+CREATE TABLE d_hospital_V1 (
+    H_Id INT PRIMARY KEY,
+    H_Region VARCHAR(255),
+    H_Name VARCHAR(255),
+    H_Department VARCHAR(255),
+    H_Categoried_hospital_v1 VARCHAR(255),
+    Bed_Total INT, 
+    Bed_General INT, 
+    Bed_Psy INT, 
+    Bed_Nursing INT, 
+    Bed_Intensive INT,
+    Bed_Isolation INT,
+    Bed_Clean INT, 
+    H_Phone_Number VARCHAR(255),
+    H_Address VARCHAR(255),
+    H_Latitude FLOAT,
+    H_Longitude FLOAT
+);
+ALTER TABLE d_hospital_V1
+MODIFY COLUMN H_Latitude DECIMAL(10,8),
+MODIFY COLUMN H_Longitude DECIMAL(11,8);
+UPDATE d_hospital_V1 SET H_Categorie = '종합 의원' WHERE H_Id = 942;
+
+select * from d_hospital_v1;
+drop table patient;
+select * from error_logs;
+select * from user_info;
+select * from appointment;
+
+
+
