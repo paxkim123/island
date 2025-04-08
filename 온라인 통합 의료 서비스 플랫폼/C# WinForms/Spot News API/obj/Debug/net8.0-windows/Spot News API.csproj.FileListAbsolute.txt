@@ -1,0 +1,60 @@
+C:\Users\user\OneDrive\바탕 화면\Spot News API\bin\Debug\net8.0-windows\Spot News API.exe
+C:\Users\user\OneDrive\바탕 화면\Spot News API\bin\Debug\net8.0-windows\Spot News API.deps.json
+C:\Users\user\OneDrive\바탕 화면\Spot News API\bin\Debug\net8.0-windows\Spot News API.runtimeconfig.json
+C:\Users\user\OneDrive\바탕 화면\Spot News API\bin\Debug\net8.0-windows\Spot News API.dll
+C:\Users\user\OneDrive\바탕 화면\Spot News API\bin\Debug\net8.0-windows\Spot News API.pdb
+C:\Users\user\OneDrive\바탕 화면\Spot News API\obj\Debug\net8.0-windows\Spot_News_API.Form1.resources
+C:\Users\user\OneDrive\바탕 화면\Spot News API\obj\Debug\net8.0-windows\Spot News API.csproj.GenerateResource.cache
+C:\Users\user\OneDrive\바탕 화면\Spot News API\obj\Debug\net8.0-windows\Spot News API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\OneDrive\바탕 화면\Spot News API\obj\Debug\net8.0-windows\Spot News API.AssemblyInfoInputs.cache
+C:\Users\user\OneDrive\바탕 화면\Spot News API\obj\Debug\net8.0-windows\Spot News API.AssemblyInfo.cs
+C:\Users\user\OneDrive\바탕 화면\Spot News API\obj\Debug\net8.0-windows\Spot News API.csproj.CoreCompileInputs.cache
+C:\Users\user\OneDrive\바탕 화면\Spot News API\obj\Debug\net8.0-windows\Spot News API.dll
+C:\Users\user\OneDrive\바탕 화면\Spot News API\obj\Debug\net8.0-windows\refint\Spot News API.dll
+C:\Users\user\OneDrive\바탕 화면\Spot News API\obj\Debug\net8.0-windows\Spot News API.pdb
+C:\Users\user\OneDrive\바탕 화면\Spot News API\obj\Debug\net8.0-windows\Spot News API.genruntimeconfig.cache
+C:\Users\user\OneDrive\바탕 화면\Spot News API\obj\Debug\net8.0-windows\ref\Spot News API.dll
+C:\Users\user\OneDrive\바탕 화면\Spot News API\bin\Debug\net8.0-windows\Spot News API.dll.config
+C:\Users\user\OneDrive\바탕 화면\Spot News API\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\user\OneDrive\바탕 화면\Spot News API\obj\Debug\net8.0-windows\Spot News API.csproj.AssemblyReference.cache
+C:\Users\user\OneDrive\바탕 화면\Spot News API\obj\Debug\net8.0-windows\Spot New.FBF6B935.Up2Date
+C:\Users\KB\Desktop\Spot News API\bin\Debug\net8.0-windows\Spot News API.exe
+C:\Users\KB\Desktop\Spot News API\bin\Debug\net8.0-windows\Spot News API.dll.config
+C:\Users\KB\Desktop\Spot News API\bin\Debug\net8.0-windows\Spot News API.deps.json
+C:\Users\KB\Desktop\Spot News API\bin\Debug\net8.0-windows\Spot News API.runtimeconfig.json
+C:\Users\KB\Desktop\Spot News API\bin\Debug\net8.0-windows\Spot News API.dll
+C:\Users\KB\Desktop\Spot News API\bin\Debug\net8.0-windows\Spot News API.pdb
+C:\Users\KB\Desktop\Spot News API\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\KB\Desktop\Spot News API\obj\Debug\net8.0-windows\Spot News API.csproj.AssemblyReference.cache
+C:\Users\KB\Desktop\Spot News API\obj\Debug\net8.0-windows\Spot_News_API.Form1.resources
+C:\Users\KB\Desktop\Spot News API\obj\Debug\net8.0-windows\Spot News API.csproj.GenerateResource.cache
+C:\Users\KB\Desktop\Spot News API\obj\Debug\net8.0-windows\Spot News API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\KB\Desktop\Spot News API\obj\Debug\net8.0-windows\Spot News API.AssemblyInfoInputs.cache
+C:\Users\KB\Desktop\Spot News API\obj\Debug\net8.0-windows\Spot News API.AssemblyInfo.cs
+C:\Users\KB\Desktop\Spot News API\obj\Debug\net8.0-windows\Spot News API.csproj.CoreCompileInputs.cache
+C:\Users\KB\Desktop\Spot News API\obj\Debug\net8.0-windows\Spot New.FBF6B935.Up2Date
+C:\Users\KB\Desktop\Spot News API\obj\Debug\net8.0-windows\Spot News API.dll
+C:\Users\KB\Desktop\Spot News API\obj\Debug\net8.0-windows\refint\Spot News API.dll
+C:\Users\KB\Desktop\Spot News API\obj\Debug\net8.0-windows\Spot News API.pdb
+C:\Users\KB\Desktop\Spot News API\obj\Debug\net8.0-windows\Spot News API.genruntimeconfig.cache
+C:\Users\KB\Desktop\Spot News API\obj\Debug\net8.0-windows\ref\Spot News API.dll
+C:\Users\KB\Desktop\C#\Spot News API\bin\Debug\net8.0-windows\Spot News API.exe
+C:\Users\KB\Desktop\C#\Spot News API\bin\Debug\net8.0-windows\Spot News API.dll.config
+C:\Users\KB\Desktop\C#\Spot News API\bin\Debug\net8.0-windows\Spot News API.deps.json
+C:\Users\KB\Desktop\C#\Spot News API\bin\Debug\net8.0-windows\Spot News API.runtimeconfig.json
+C:\Users\KB\Desktop\C#\Spot News API\bin\Debug\net8.0-windows\Spot News API.dll
+C:\Users\KB\Desktop\C#\Spot News API\bin\Debug\net8.0-windows\Spot News API.pdb
+C:\Users\KB\Desktop\C#\Spot News API\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\KB\Desktop\C#\Spot News API\obj\Debug\net8.0-windows\Spot News API.csproj.AssemblyReference.cache
+C:\Users\KB\Desktop\C#\Spot News API\obj\Debug\net8.0-windows\Spot_News_API.Form1.resources
+C:\Users\KB\Desktop\C#\Spot News API\obj\Debug\net8.0-windows\Spot News API.csproj.GenerateResource.cache
+C:\Users\KB\Desktop\C#\Spot News API\obj\Debug\net8.0-windows\Spot News API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\KB\Desktop\C#\Spot News API\obj\Debug\net8.0-windows\Spot News API.AssemblyInfoInputs.cache
+C:\Users\KB\Desktop\C#\Spot News API\obj\Debug\net8.0-windows\Spot News API.AssemblyInfo.cs
+C:\Users\KB\Desktop\C#\Spot News API\obj\Debug\net8.0-windows\Spot News API.csproj.CoreCompileInputs.cache
+C:\Users\KB\Desktop\C#\Spot News API\obj\Debug\net8.0-windows\Spot New.FBF6B935.Up2Date
+C:\Users\KB\Desktop\C#\Spot News API\obj\Debug\net8.0-windows\Spot News API.dll
+C:\Users\KB\Desktop\C#\Spot News API\obj\Debug\net8.0-windows\refint\Spot News API.dll
+C:\Users\KB\Desktop\C#\Spot News API\obj\Debug\net8.0-windows\Spot News API.pdb
+C:\Users\KB\Desktop\C#\Spot News API\obj\Debug\net8.0-windows\Spot News API.genruntimeconfig.cache
+C:\Users\KB\Desktop\C#\Spot News API\obj\Debug\net8.0-windows\ref\Spot News API.dll
