@@ -1,0 +1,28 @@
+1. [엑셀 및 각종 양식] 폴더의 제목명 'SQL문' 텍스트 파일의 병원 테이블 생성 구문으로 먼저 병원테이블을 생성한 뒤
+해당 폴더 내의 '대구 전체 병원 목록(D_Hospital)'을 import 하면 됩니다.
+
+2. [SpringBoot]의 압축된 파일 내에 현재 설정된 application.properties 구문은 다음과 같습니다.
+
+spring.application.name=Hospital
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/test_db
+spring.datasource.username=admin
+spring.datasource.password=0000
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.format_sql=true
+spring.thymeleaf.cache=false
+
+spring.jackson.serialization.FAIL_ON_EMPTY_BEANS=false
+spring.cache.type=simple
+logging.level.org.springframework.cache=DEBUG
+
+자신의 계정(user)에 맞게 이름(admin)과 프로젝트 명(Hospital), 비밀번호(0000) 및 Schema(test_db)를 변경하면 됩니다.
+
+3. SpringBoot 서버 가동 후 새로 생성되는 patient 테이블에 
+[엑셀 및 각종 양식]의 '문진표(patient 테이블) 데이터'를 import하면 
+문진표 샘플 데이터 약 7000개가 삽입됩니다.
+
+
+
+
