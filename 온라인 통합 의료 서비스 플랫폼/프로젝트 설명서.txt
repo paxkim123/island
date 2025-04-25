@@ -23,6 +23,7 @@ logging.level.org.springframework.cache=DEBUG
 [엑셀 및 각종 양식]의 '문진표(patient 테이블) 데이터'를 import하면 
 문진표 샘플 데이터 약 7000개가 삽입됩니다.
 
-
+4. C# WinForms으로 제작한 Port Scanner, SpotNews API, ERP는 스프링부트 서버와 관계없이 비주얼 스튜디오에서 실행하면 
+제작된 창이 뜹니다. 
 
 
